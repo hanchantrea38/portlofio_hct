@@ -303,36 +303,6 @@
     box-shadow: var(--shadow-glass);
   }
 
-  /* ─── Scroll Indicator ─── */
-  .scroll-indicator {
-    @apply absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2;
-    color: var(--text-muted);
-  }
-
-  .scroll-indicator span {
-    @apply text-[10px] tracking-[0.2em] uppercase font-medium;
-  }
-
-  .scroll-indicator .mouse {
-    width: 24px;
-    height: 38px;
-    @apply rounded-full border-2 flex items-start justify-center pt-2;
-    border-color: var(--text-muted);
-  }
-
-  .scroll-indicator .mouse-dot {
-    width: 3px;
-    height: 8px;
-    @apply rounded-full;
-    background: #d4a574;
-    animation: scrollMouse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollMouse {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(8px); opacity: 0; }
-  }
-
   /* ─── Tag Premium ─── */
   .tag-premium {
     @apply text-xs font-medium px-3.5 py-1.5 rounded-full border transition-all duration-500;

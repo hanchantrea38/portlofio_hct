@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import TypingEffect from "./TypingEffect";
 import AnimatedCounter from "./AnimatedCounter";
 import MagneticButton from "./MagneticButton";
+import ProfileImage from "../assets/CT.png";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -156,7 +157,7 @@ export default function Hero() {
                 className="preserve-3d"
               >
                 <img
-                  src="/CT.png"
+                  src={ProfileImage}
                   alt="CHANTREA HAN profile portrait"
                   className="w-[340px] h-[340px] md:w-[400px] md:h-[400px] object-cover rounded-full relative z-[1]
                              shadow-[0_0_80px_rgba(124,58,237,0.15),0_0_160px_rgba(212,165,116,0.05)]
@@ -200,13 +201,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="scroll-indicator max-md:hidden">
-        <div className="mouse">
-          <div className="mouse-dot" />
-        </div>
-        <span>Scroll</span>
-      </div>
     </section>
   );
 }

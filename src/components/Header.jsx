@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
-import LogoImage from "../assets/CT.png";
 
 const navLinks = [
   { path: "/", label: "Home" },
@@ -67,23 +66,20 @@ export default function Header() {
         {/* Logo */}
         <Link
           to="/"
-          className="relative group flex items-center gap-3 no-underline"
+          className="relative group no-underline"
           aria-label="CHANTREA HAN Home"
         >
-          <img
-            src={LogoImage}
-            alt="CHANTREA HAN logo"
-            className="w-10 h-10 rounded-full object-cover border border-white/20 shadow-lg"
-          />
-          <div className="flex flex-col leading-tight">
-            <span className="font-heading text-xl font-extrabold tracking-[-0.03em] transition-all duration-500 text-theme">
-              CHANTREA
-            </span>
-            <span className="font-heading text-xl font-extrabold tracking-[-0.03em] gold-gradient-text">
-              HAN
-            </span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[0.35em] leading-none">
+              <span className="font-heading text-[1.65rem] md:text-[1.85rem] font-extrabold tracking-[-0.04em] transition-all duration-500 text-theme group-hover:text-gold-400">
+                CHANTREA
+              </span>
+              <span className="font-heading text-[1.65rem] md:text-[1.85rem] font-extrabold tracking-[-0.04em] gold-gradient-text group-hover:opacity-80 transition-all duration-500">
+                HAN
+              </span>
+            </div>
           </div>
-          <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gradient-to-r from-gold-500 to-royal-500 transition-all duration-500 group-hover:w-full" />
+          <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-gold-500 to-royal-500 transition-all duration-500 group-hover:w-full shadow-[0_0_8px_rgba(212,165,116,0.3)]" />
         </Link>
 
         {/* Mobile Toggle */}
