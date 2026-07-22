@@ -59,7 +59,7 @@ export default function Contact() {
                 <div className="space-y-4 mt-8">
                   {[
                     { icon: "fas fa-envelope", title: "Email", value: "hanchantrea38@gmail.com", sub: "Response within 24 hours" },
-                    { icon: "fas fa-phone", title: "Phone", value: "(+855) 819 060 64", sub: "Mon-Fri, 7 AM - 9 PM" },
+                    { icon: "fas fa-phone", title: "Phone", value: "(+855) 819 060 64 / 886 462 967", sub: "Response 24/7" },
                     { icon: "fas fa-map-marker-alt", title: "Location", value: "Phnom Penh, Cambodia", sub: "Open to remote work worldwide" },
                   ].map((item) => (
                     <div key={item.title} className="flex items-start gap-4 p-5 card-premium group">
