@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chantreahan.netlify.app/sitemap.xml

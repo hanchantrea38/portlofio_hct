@@ -9,6 +9,7 @@ import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
 import CustomCursor from "./components/CustomCursor";
 import CanvasParticles from "./components/CanvasParticles";
+import SEO from "./components/SEO";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Education from "./pages/Education";
@@ -44,6 +45,7 @@ function AppContent() {
 
   return (
     <>
+      <SEO />
       <ScrollToTop />
       <SkipLink />
       <ScrollProgress />
