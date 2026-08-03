@@ -2,21 +2,70 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "../components/ScrollReveal";
 
+// Telegram deep-link phone number (+855 81 906 064) — messages land here
+const TELEGRAM_PHONE = "85581906064";
+const TELEGRAM_URL = `https://t.me/+${TELEGRAM_PHONE}`;
+
+const SUBJECT_LABELS = {
+  project: "Project Inquiry",
+  collaboration: "Collaboration",
+  job: "Job Opportunity",
+  freelance: "Freelance Work",
+  question: "Technical Question",
+  other: "Other",
+};
+
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "", newsletter: true });
   const [submitted, setSubmitted] = useState(false);
+  const [sentLink, setSentLink] = useState("");
+  const [popupBlocked, setPopupBlocked] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
   };
 
+  const buildTelegramMessage = () => {
+    const { name, email, subject, message } = formData;
+    return [
+      "New message from your portfolio website",
+      "",
+      `Name: ${name.trim()}`,
+      `Email: ${email.trim()}`,
+      `Subject: ${subject ? SUBJECT_LABELS[subject] || subject : "General"}`,
+      "",
+      "Message:",
+      message.trim(),
+    ].join("\n");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError("Please fill in your name, email, and message.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    setError("");
+    const link = `${TELEGRAM_URL}?text=${encodeURIComponent(buildTelegramMessage())}`;
+    const opened = window.open(link, "_blank", "noopener");
+    setPopupBlocked(!opened);
+    setSentLink(link);
     setSubmitted(true);
     setFormData({ name: "", email: "", subject: "", message: "", newsletter: true });
-    setTimeout(() => setSubmitted(false), 5000);
+  };
+
+  const resetForm = () => {
+    setSubmitted(false);
+    setSentLink("");
+    setPopupBlocked(false);
   };
 
   return (
@@ -84,6 +133,7 @@ export default function Contact() {
                   <p className="text-xs text-theme-muted mb-4 font-light">Follow my work and connect on social platforms</p>
                   <div className="flex gap-3 flex-wrap">
                     {[
+                      { icon: "fab fa-telegram", url: TELEGRAM_URL, label: "Telegram" },
                       { icon: "fab fa-github", url: "https://github.com/hanchantrea38", label: "GitHub" },
                       { icon: "fab fa-linkedin-in", url: "https://www.linkedin.com/in/chantrea-han/", label: "LinkedIn" },
                       { icon: "fab fa-facebook", url: "https://www.facebook.com/chantrea.han.33", label: "Facebook" },
@@ -112,14 +162,34 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12 bg-gradient-to-br from-royal-500/5 to-gold-500/5 border border-gold-500/10 rounded-2xl"
+                    className="text-center py-12 px-6 bg-gradient-to-br from-royal-500/5 to-gold-500/5 border border-gold-500/10 rounded-2xl"
                   >
                     <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4
                                     bg-gradient-to-br from-royal-500/20 to-gold-500/20">
-                      <i className="fas fa-check-circle text-3xl gold-gradient-text" />
+                      <i className="fab fa-telegram text-3xl gold-gradient-text" />
                     </div>
-                    <h3 className="font-body text-lg text-gold-500/80 mb-1">Message Sent!</h3>
-                    <p className="text-sm text-theme-secondary mb-0 font-light">Thank you! I'll get back to you within 24 hours.</p>
+                    <h3 className="font-body text-lg text-gold-500/80 mb-1">
+                      {popupBlocked ? "Your Message Is Ready!" : "Message Ready in Telegram!"}
+                    </h3>
+                    <p className="text-sm text-theme-secondary mb-2 font-light">
+                      {popupBlocked
+                        ? "Your browser blocked the automatic popup — tap the button below to open Telegram with your message pre-filled."
+                        : ("Telegram opened with your message pre-filled — just tap " +
+                          "Send and it lands straight in my inbox.")}
+                    </p>
+                    <p className="text-xs text-theme-muted mb-6 font-light">
+                      {popupBlocked
+                        ? "One tap to send — then I'll get back to you within 24 hours."
+                        : "Didn't open? Tap the button below to continue in Telegram."}
+                    </p>
+                    <a href={sentLink} target="_blank" rel="noopener" className="btn-premium w-full justify-center mb-4">
+                      <i className="fab fa-telegram text-xs" />
+                      <span>Open Telegram</span>
+                    </a>
+                    <button type="button" onClick={resetForm}
+                      className="text-xs text-theme-muted hover:text-gold-500 transition-colors underline underline-offset-4 cursor-pointer">
+                      Send another message
+                    </button>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
@@ -170,6 +240,18 @@ export default function Contact() {
                         Subscribe to my newsletter for updates
                       </label>
                     </div>
+
+                    {error && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-xs text-red-400/90 mb-4 flex items-center gap-2 font-light"
+                        role="alert"
+                      >
+                        <i className="fas fa-exclamation-circle" />
+                        {error}
+                      </motion.p>
+                    )}
 
                     <button type="submit" className="btn-premium w-full justify-center group">
                       <i className="fas fa-paper-plane text-xs transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
