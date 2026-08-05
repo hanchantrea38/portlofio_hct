@@ -102,10 +102,14 @@
   --bg-card-hover: rgba(124, 58, 237, 0.04);
   --bg-tag: rgba(212, 165, 116, 0.08);
   --bg-input: rgba(255, 255, 255, 0.9);
-  --text-primary: #1a1a2e;
-  --text-secondary: rgba(0, 0, 0, 0.55);
-  --text-muted: rgba(0, 0, 0, 0.35);
-  --text-gold-muted: rgba(180, 140, 90, 0.55);
+  /* Rich, high-contrast text for light mode — dark navy at strong opacity
+     instead of washed-out 55%/35% black, so body & captions stay crisp. */
+  --text-primary: #131323;
+  --text-secondary: rgba(26, 26, 46, 0.80);
+  --text-muted: rgba(26, 26, 46, 0.62);
+  --text-gold-muted: rgba(163, 122, 76, 0.78);
+  /* Deepen default gold accent so accent text (tags, hover titles) stays readable on light backgrounds */
+  --page-accent: #9a6838;
   --border-subtle: rgba(124, 58, 237, 0.06);
   --border-light: rgba(124, 58, 237, 0.08);
   --border-medium: rgba(124, 58, 237, 0.12);
@@ -119,6 +123,18 @@
   --header-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
   --mobile-nav-bg: rgba(250, 248, 245, 0.98);
 }
+
+/* ─── Light Mode Text Readability ─── */
+/* Page accents are tuned for dark backgrounds; on light backgrounds the same
+   hues read too pale. Deepen them so accent text (tags, eyebrow labels,
+   links, gradient text) stays crisp and professional in light mode. */
+:root:not(.dark) .page-theme-purple { --page-accent: #6d28d9; --page-accent-2: #7c3aed; }
+:root:not(.dark) .page-theme-teal   { --page-accent: #0f766e; --page-accent-2: #0d9488; }
+:root:not(.dark) .page-theme-emerald{ --page-accent: #047857; --page-accent-2: #059669; }
+:root:not(.dark) .page-theme-rose   { --page-accent: #be123c; --page-accent-2: #e11d48; }
+
+/* Thin (300) type looks washed out on light backgrounds — use regular weight */
+:root:not(.dark) .font-light { font-weight: 400; }
 
 @layer base {
   html { scroll-behavior: smooth; }

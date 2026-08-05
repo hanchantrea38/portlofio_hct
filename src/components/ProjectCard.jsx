@@ -42,7 +42,7 @@ export default function ProjectCard({ project, delay = 0 }) {
 
         {/* Content */}
         <div className="p-7 relative z-[1]">
-          <h3 className="font-body font-semibold mb-3 text-lg text-theme group-hover:text-white transition-colors duration-500">
+          <h3 className="font-body font-semibold mb-3 text-lg text-theme group-hover:text-[var(--page-accent)] transition-colors duration-500">
             {project.title}
           </h3>
           <p className="text-sm text-theme-secondary mb-4 leading-relaxed font-light">

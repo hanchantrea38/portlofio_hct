@@ -75,7 +75,7 @@ export default function FeaturedProjects() {
               </div>
 
               <div className="p-8 relative z-[1]">
-                <h3 className="font-body font-semibold mb-3 text-lg text-theme group-hover:text-white transition-colors duration-500">
+                <h3 className="font-body font-semibold mb-3 text-lg text-theme group-hover:text-[var(--page-accent)] transition-colors duration-500">
                   {project.title}
                 </h3>
                 <p className="text-sm text-theme-secondary mb-5 leading-relaxed font-light">

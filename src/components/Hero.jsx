@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import TypingEffect from "./TypingEffect";
 import AnimatedCounter from "./AnimatedCounter";
 import MagneticButton from "./MagneticButton";
-import ProfileImage from "../assets/CT.png";
+import ProfileImage from "../assets/CT.webp";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -159,10 +159,14 @@ export default function Hero() {
                 <img
                   src={ProfileImage}
                   alt="CHANTREA HAN profile portrait"
+                  width={800}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-[340px] h-[340px] md:w-[400px] md:h-[400px] object-cover rounded-full relative z-[1]
                              shadow-[0_0_80px_rgba(124,58,237,0.15),0_0_160px_rgba(212,165,116,0.05)]
                              transition-shadow duration-700"
-                  loading="eager"
                 />
 
                 {/* Gold ring */}
@@ -191,8 +195,9 @@ export default function Hero() {
                            max-lg:-left-4 max-lg:right-auto max-lg:bottom-4
                            max-sm:hidden"
               >
-                <p className="text-[10px] tracking-[0.15em] uppercase text-gold-500/60 mb-1 font-medium">Available for</p>
-                <p className="text-xs text-theme-secondary leading-relaxed">
+                <p className="text-[10px] tracking-[0.15em] uppercase text-gold-500/70 mb-1 font-medium">Available for</p>
+                {/* Card has a fixed dark glass background — keep its text light in both themes */}
+                <p className="text-xs text-white/70 leading-relaxed">
                   Web projects, UI improvements &amp; collaborations
                 </p>
               </motion.div>

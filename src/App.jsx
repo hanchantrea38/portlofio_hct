@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/Header";
@@ -9,11 +9,14 @@ import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
 import CustomCursor from "./components/CustomCursor";
 import CanvasParticles from "./components/CanvasParticles";
+
+// Route-level code splitting — Home stays eager for a fast first paint;
+// the other pages load only when visited
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Education from "./pages/Education";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
+const About = lazy(() => import("./pages/About"));
+const Education = lazy(() => import("./pages/Education"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -51,13 +54,19 @@ function AppContent() {
       <CustomCursor />
       <Header />
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
-          <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
-          <Route path="/education" element={<AnimatedPage><Education /></AnimatedPage>} />
-          <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
-          <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-        </Routes>
+        <Suspense key={location.pathname} fallback={
+          <div className="min-h-[60vh] flex items-center justify-center" role="status" aria-label="Loading page">
+            <div className="w-12 h-12 rounded-full border-2 border-gold-500/30 border-t-gold-500 animate-spin" />
+          </div>
+        }>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+            <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
+            <Route path="/education" element={<AnimatedPage><Education /></AnimatedPage>} />
+            <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
+            <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+          </Routes>
+        </Suspense>
       </AnimatePresence>
       <Footer />
       <BackToTop />
