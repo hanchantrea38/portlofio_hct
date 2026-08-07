@@ -16,6 +16,7 @@ import Home from "./pages/Home";
 const About = lazy(() => import("./pages/About"));
 const Education = lazy(() => import("./pages/Education"));
 const Projects = lazy(() => import("./pages/Projects"));
+const Gallery = lazy(() => import("./pages/Gallery"));
 const Contact = lazy(() => import("./pages/Contact"));
 
 function ScrollToTop() {
@@ -64,6 +65,7 @@ function AppContent() {
             <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
             <Route path="/education" element={<AnimatedPage><Education /></AnimatedPage>} />
             <Route path="/projects" element={<AnimatedPage><Projects /></AnimatedPage>} />
+            <Route path="/gallery" element={<AnimatedPage><Gallery /></AnimatedPage>} />
             <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
           </Routes>
         </Suspense>

@@ -72,7 +72,7 @@ export default function Footer() {
           <motion.div variants={itemVariants}>
             <h3 className="font-body text-xs tracking-[0.2em] uppercase text-gold-500/50 mb-6 font-semibold">Quick Links</h3>
             <ul className="list-none space-y-3">
-              {[{ to: "/", label: "Home" }, { to: "/about", label: "About" }, { to: "/projects", label: "Projects" }].map((link) => (
+              {[{ to: "/", label: "Home" }, { to: "/about", label: "About" }, { to: "/projects", label: "Projects" }, { to: "/gallery", label: "Gallery" }].map((link) => (
                 <li key={link.to}>
                   <Link to={link.to}
                     className="text-theme-secondary text-sm no-underline transition-all duration-300 hover:text-gold-500/70 hover:pl-2 group flex items-center gap-2 max-md:justify-center">

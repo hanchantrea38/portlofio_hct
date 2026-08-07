@@ -64,6 +64,17 @@
                radial-gradient(ellipse at 50% 20%, rgba(212,165,116,0.04) 0%, transparent 50%);
 }
 
+/* Page: Gallery (Amber) */
+.page-theme-amber {
+  --page-accent: #f59e0b;
+  --page-accent-2: #fbbf24;
+  --page-accent-rgb: 245, 158, 11;
+  --page-accent-2-rgb: 251, 191, 36;
+  --page-mesh: radial-gradient(ellipse at 40% 20%, rgba(245,158,11,0.12) 0%, transparent 50%),
+               radial-gradient(ellipse at 70% 70%, rgba(251,191,36,0.08) 0%, transparent 50%),
+               radial-gradient(ellipse at 20% 80%, rgba(212,165,116,0.05) 0%, transparent 50%);
+}
+
 /* ─── CSS Custom Properties (Dark Default) ─── */
 :root {
   --bg-primary: #05050A;
@@ -132,6 +143,7 @@
 :root:not(.dark) .page-theme-teal   { --page-accent: #0f766e; --page-accent-2: #0d9488; }
 :root:not(.dark) .page-theme-emerald{ --page-accent: #047857; --page-accent-2: #059669; }
 :root:not(.dark) .page-theme-rose   { --page-accent: #be123c; --page-accent-2: #e11d48; }
+:root:not(.dark) .page-theme-amber  { --page-accent: #b45309; --page-accent-2: #d97706; }
 
 /* Thin (300) type looks washed out on light backgrounds — use regular weight */
 :root:not(.dark) .font-light { font-weight: 400; }
