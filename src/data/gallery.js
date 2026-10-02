@@ -8,69 +8,72 @@
    2. Add an import line below, e.g.:
          import myPhoto from "../assets/activities/my-photo.jpg";
    3. Add a new entry to the `galleryItems` array using myPhoto.
-      Category must be "activity" or "achievement".
-        { id: 7, title: "...", category: "activity",
-          date: "2025", description: "...", image: myPhoto }
+      Category must be one of: "activity", "achievement",
+      "club" (clubs & groups) or "personal".
+        { id: 9, title: "...", category: "activity",
+          description: "...", image: myPhoto }
 
-   The 6 placeholder entries below are examples — replace them
-   with your real photos and details whenever you're ready.
+   The entries below use placeholder titles — swap in your real
+   titles and categories whenever you're ready.
    ═══════════════════════════════════════════════════════════════ */
 
-import placeholder1 from "../assets/activities/placeholder-1.svg";
-import placeholder2 from "../assets/activities/placeholder-2.svg";
-import placeholder3 from "../assets/activities/placeholder-3.svg";
-import placeholder4 from "../assets/activities/placeholder-4.svg";
-import placeholder5 from "../assets/activities/placeholder-5.svg";
-import placeholder6 from "../assets/activities/placeholder-6.svg";
+import act1 from "../assets/activities/act1.jpg";
+import act2 from "../assets/activities/act2.jpg";
+import atCt1 from "../assets/activities/at-ct1.jpg";
+import ct1 from "../assets/activities/ct1.jpg";
+import ct2 from "../assets/activities/ct2.jpg";
+import ct5 from "../assets/activities/ct5.jpg";
+import ct6 from "../assets/activities/ct6.jpg";
+import pct1 from "../assets/activities/pct1.jpg";
 
 export const galleryItems = [
   {
     id: 1,
-    title: "Web Development Bootcamp",
+    title: "Activity Photo 1",
     category: "activity",
-    date: "2025",
-    description: "Intensive full-stack bootcamp covering HTML, CSS, JavaScript, PHP, and databases with hands-on project work.",
-    image: placeholder1,
+    image: act1,
   },
   {
     id: 2,
-    title: "Best UI/UX Design Project",
-    category: "achievement",
-    date: "2025",
-    description: "Awarded Best UI/UX Design for the Komroung Trip Booking Application.",
-    image: placeholder2,
+    title: "Activity Photo 2",
+    category: "activity",
+    image: act2,
   },
   {
     id: 3,
-    title: "Agile & Scrum Training",
-    category: "activity",
-    date: "2025",
-    description: "Trained in Agile project management, Scrum ceremonies, and sprint planning with Jira.",
-    image: placeholder3,
+    title: "Achievement Photo 1",
+    category: "achievement",
+    image: atCt1,
   },
   {
     id: 4,
-    title: "PNC Developer Club Meetup",
+    title: "Activity Photo 3",
     category: "activity",
-    date: "2024",
-    description: "Regular participant in coding challenges, hackathons, and peer programming sessions.",
-    image: placeholder4,
+    image: ct2,
   },
   {
     id: 5,
-    title: "Volunteer Mentor for Juniors",
-    category: "achievement",
-    date: "2025",
-    description: "Mentored first-year students in HTML, CSS, and JavaScript — helping them build their first web pages.",
-    image: placeholder5,
+    title: "Activity Photo 4",
+    category: "activity",
+    image: ct5,
   },
   {
     id: 6,
-    title: "Top Performer in Web Development",
+    title: "Achievement Photo 2",
     category: "achievement",
-    date: "2025",
-    description: "Recognized as the top-performing student in the web development track.",
-    image: placeholder6,
+    image: ct6,
+  },
+  {
+    id: 7,
+    title: "Activity Photo 5",
+    category: "activity",
+    image: pct1,
+  },
+  {
+    id: 8,
+    title: "Achievement Photo 3",
+    category: "achievement",
+    image: ct1,
   },
 ];
 
@@ -78,4 +81,6 @@ export const galleryFilters = [
   { value: "all", label: "All Photos", icon: "fas fa-images" },
   { value: "activity", label: "Activities", icon: "fas fa-camera" },
   { value: "achievement", label: "Achievements", icon: "fas fa-trophy" },
+  { value: "club", label: "Clubs & Groups", icon: "fas fa-users" },
+  { value: "personal", label: "Personal", icon: "fas fa-user" },
 ];

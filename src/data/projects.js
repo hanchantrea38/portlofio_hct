@@ -77,9 +77,9 @@ export const projects = [
     description: "The system that attendance and register the face by the Webcam for the user.",
     category: "school",
     icon: "fas fa-camera",
-    tags: ["HTML", "CSS", "Tailwind CSS", "Rest APIs"],
+    tags: ["Python (Flask)", "OpenCV", "NumPy", "JavaScript", "Tailwind CSS", "HTML"],
     links: {
-      details: "",
+      details: "https://face-attendance.publicationweb.site/",
       code: "https://github.com/chantrea8888/attendance_system.git",
     },
   },

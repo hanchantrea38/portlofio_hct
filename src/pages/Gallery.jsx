@@ -5,6 +5,8 @@ import { galleryItems, galleryFilters } from "../data/gallery";
 const CATEGORY_META = {
   activity: { label: "Activity", icon: "fas fa-camera", color: "#d4a574" },
   achievement: { label: "Achievement", icon: "fas fa-trophy", color: "#34d399" },
+  club: { label: "Club & Group", icon: "fas fa-users", color: "#60a5fa" },
+  personal: { label: "Personal", icon: "fas fa-user", color: "#f472b6" },
 };
 
 export default function Gallery() {
@@ -51,7 +53,6 @@ export default function Gallery() {
 
   const activeItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
   const accent = "var(--page-accent)";
-  const accentRgb = "var(--page-accent-rgb)";
 
   return (
     <main id="main" className="page-theme-amber">
@@ -191,10 +192,6 @@ export default function Gallery() {
 
                       {/* Caption */}
                       <div className="absolute bottom-0 left-0 right-0 p-5 relative z-[1]">
-                        <p className="text-[11px] font-semibold tracking-wide mb-1" style={{ color: accent }}>
-                          <i className="far fa-calendar-alt mr-1.5 text-[10px]" aria-hidden="true" />
-                          {item.date}
-                        </p>
                         <h3 className="font-body font-semibold text-white text-base leading-snug mb-1">{item.title}</h3>
                         {/* Description — always visible on featured tiles, revealed on hover otherwise */}
                         <p className={`text-white/70 text-xs leading-relaxed font-light overflow-hidden
@@ -223,50 +220,6 @@ export default function Gallery() {
               </p>
             </motion.div>
           )}
-        </div>
-      </section>
-
-      {/* ── How to add photos ── */}
-      <section className="pb-24">
-        <div className="max-w-[1000px] mx-auto px-8">
-          <div className="glass-premium p-10 max-md:p-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div
-                className="w-11 h-11 min-w-[44px] rounded-xl flex items-center justify-center text-base"
-                style={{ background: `rgba(${accentRgb},0.1)`, color: accent }}
-                aria-hidden="true"
-              >
-                <i className="fas fa-plus" />
-              </div>
-              <div>
-                <h2 className="font-body font-semibold text-theme text-lg">Add your photos</h2>
-                <p className="text-sm text-theme-muted font-light">
-                  New photos are added as files — no database needed.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-sm:gap-4">
-              {[
-                { step: "1", title: "Drop the photo in", desc: "Copy your picture into the src/assets/activities/ folder" },
-                { step: "2", title: "Import it", desc: "Add one import line at the top of src/data/gallery.js" },
-                { step: "3", title: "Add an entry", desc: "Give it a title, category (activity / achievement) and a short description" },
-              ].map((s) => (
-                <div key={s.step} className="flex items-start gap-3">
-                  <span
-                    className="w-8 h-8 min-w-[32px] rounded-lg flex items-center justify-center text-xs font-bold"
-                    style={{ background: `rgba(${accentRgb},0.12)`, color: accent }}
-                    aria-hidden="true"
-                  >
-                    {s.step}
-                  </span>
-                  <div>
-                    <h3 className="font-body text-sm font-semibold text-theme mb-1">{s.title}</h3>
-                    <p className="text-xs text-theme-secondary font-light leading-relaxed">{s.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -351,10 +304,6 @@ export default function Gallery() {
                   >
                     <i className={`${CATEGORY_META[activeItem.category].icon} text-[10px]`} aria-hidden="true" />
                     {CATEGORY_META[activeItem.category].label}
-                  </span>
-                  <span className="text-xs text-white/50 font-medium">
-                    <i className="far fa-calendar-alt mr-1.5" aria-hidden="true" />
-                    {activeItem.date}
                   </span>
                 </div>
                 <h3 className="font-heading font-bold text-white text-2xl mb-2">{activeItem.title}</h3>
