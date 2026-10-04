@@ -17,63 +17,63 @@
    titles and categories whenever you're ready.
    ═══════════════════════════════════════════════════════════════ */
 
-import act1 from "../assets/activities/act1.jpg";
-import act2 from "../assets/activities/act2.jpg";
-import atCt1 from "../assets/activities/at-ct1.jpg";
-import ct1 from "../assets/activities/ct1.jpg";
-import ct2 from "../assets/activities/ct2.jpg";
-import ct5 from "../assets/activities/ct5.jpg";
-import ct6 from "../assets/activities/ct6.jpg";
-import pct1 from "../assets/activities/pct1.jpg";
+// import act1 from "../assets/activities/act1.jpg";
+// import act2 from "../assets/activities/act2.jpg";
+// import atCt1 from "../assets/activities/at-ct1.jpg";
+// import ct1 from "../assets/activities/ct1.jpg";
+// import ct2 from "../assets/activities/ct2.jpg";
+// import ct5 from "../assets/activities/ct5.jpg";
+// import ct6 from "../assets/activities/ct6.jpg";
+// import pct1 from "../assets/activities/pct1.jpg";
 
 export const galleryItems = [
   {
     id: 1,
     title: "Activity Photo 1",
-    category: "activity",
-    image: act1,
+    category: "activity"
+    // image: act1,
   },
   {
     id: 2,
     title: "Activity Photo 2",
-    category: "activity",
-    image: act2,
+    category: "activity"
+    // image: act2,
   },
   {
     id: 3,
     title: "Achievement Photo 1",
-    category: "achievement",
-    image: atCt1,
+    category: "achievement"
+    // image: atCt1,
   },
   {
     id: 4,
     title: "Activity Photo 3",
-    category: "activity",
-    image: ct2,
+    category: "activity"
+    // image: ct2,
   },
   {
     id: 5,
     title: "Activity Photo 4",
-    category: "activity",
-    image: ct5,
+    category: "activity"
+    // image: ct5,
   },
   {
     id: 6,
     title: "Achievement Photo 2",
-    category: "achievement",
-    image: ct6,
+    category: "achievement"
+    // image: ct6,
   },
   {
     id: 7,
     title: "Activity Photo 5",
-    category: "activity",
-    image: pct1,
+    category: "activity"
+    // image: pct1,
   },
   {
     id: 8,
     title: "Achievement Photo 3",
-    category: "achievement",
-    image: ct1,
+    category: "achievement"
+    // image: ct1,
   },
 ];
 
