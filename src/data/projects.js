@@ -41,7 +41,7 @@ export const projects = [
     description: "A simple restaurant website for showcasing menu and accepting orders.",
     category: "personal",
     icon: "fas fa-utensils",
-    tags: ["HTML", "CSS", "Tailwind CSS", "Rest APIs"],
+    tags: ["Vue.js", "TypeScript", "Laravel", "PHP", "Rest APIs", "Tailwind CSS", "Pinia", "Vite", "SQLite", "Sanctum", "GitHub"],
     links: {
       details: "",
       code: "https://github.com/hanchantrea38/worldplate_restaurant.git",
